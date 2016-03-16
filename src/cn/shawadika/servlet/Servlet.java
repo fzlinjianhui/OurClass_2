@@ -5,6 +5,6 @@ public class Servlet {
 		System.out.println("test");
 	}
 	public void main(){
-		
+		System.out.println("fdsf");
 	}
 }
