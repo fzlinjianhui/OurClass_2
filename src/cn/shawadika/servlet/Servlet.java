@@ -7,4 +7,7 @@ public class Servlet {
 	public void test(){
 		System.out.println("test");
 	}
+	public test2(){
+		
+	}
 }
