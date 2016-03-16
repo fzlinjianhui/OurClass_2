@@ -7,4 +7,7 @@ public class Servlet {
 	public void test3(){
 		
 	}
+	public void test3(){
+		
+	}
 }
