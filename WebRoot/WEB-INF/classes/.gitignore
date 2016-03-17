@@ -1,1 +1,5 @@
 /cn
+/mybatis-config
+/mybatis-config.xml
+/jdbc.properties
+/mysql.sql

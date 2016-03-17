@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shawadika.dao.UserDao">
+
+	<insert id="insertUser" parameterType="cn.shawadika.entity.User">
+		insert into class_user
+		values(
+		#{id},
+		#{sex},
+		#{name},
+		#{studentNum},
+		#{password},
+		#{type},
+		#{loginTimes},
+		#{belongClass},
+		#{dept},
+		#{specialty},
+		#{belongSchool}
+		);
+	</insert>
+</mapper>
