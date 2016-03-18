@@ -24,15 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	content="University Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
 </script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -47,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--contact-->
 	<div class="contact">
 		<!-- 富文本编辑器 -->
-		<script charset="utf-8" src="./kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="./kindeditor/kindeditor-min.js"></script>
 		<script charset="utf-8" src="./kindeditor/lang/zh_CN.js"></script>
 		<script>
 			KindEditor.ready(function(K) {

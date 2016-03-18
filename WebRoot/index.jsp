@@ -21,17 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="班级网站" />
 <script type="application/x-javascript">
-	
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
 </script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -281,8 +271,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div>
+	
+<div class="footer">
+	<div class="container">
+		<!-- 显示个人信息 -->
+		<table style="border:1px solid red">
+			<tr>
+				<td>学号：</td>
+			</tr>
+		</table>
+	</div>
+</div>
 	<!---->
-	<div class="footer">
+<!--	<div class="footer">
 		<div class="container">
 			<div>
 				<div class="col-md-4 ftr-grid">
@@ -296,7 +297,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- 修改页面窗口 -->
-	<center>
+ <!-- center>
 		<div style="width: 100%;position:relative;bottom: 100px"
 			class="my-change-psw-table" hidden="hidden">
 			<table class=" ">
@@ -323,7 +324,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</tr>
 			</table>
 		</div>
-	</center>
+	</center> -->
 	<!---->
 	<jsp:include page="head/footer.jsp"></jsp:include>
 	<!---->
