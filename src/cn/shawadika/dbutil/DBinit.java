@@ -1,21 +1,21 @@
-package cn.shawadika.test;
+package cn.shawadika.dbutil;
 
-import java.io.IOException;
 import java.io.Reader;
 
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.io.Resources;
 
 public class DBinit {
 	private final static SqlSessionFactory  sqlSessionFactory;
+	private static Reader reader=null;
 	static{
 		String resource="mybatis-config.xml";
-		Reader reader=null;
 		try {
 			reader=Resources.getResourceAsReader(resource);
-		} catch (IOException e) {
-			System.out.println(e.getMessage()+"∂¡»°≈‰÷√Œƒº˛ ß∞‹");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage()+"ÈÖçÁΩÆÊñá‰ª∂Âá∫Èîô");
 		}
 		sqlSessionFactory=new SqlSessionFactoryBuilder().build(reader);
 	}

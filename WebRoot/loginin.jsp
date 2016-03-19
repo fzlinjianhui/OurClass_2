@@ -40,10 +40,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<input name="passWord" type="password" class="pass"
 						value="Password" onfocus="this.value = '';"
 						onblur="if (this.value == '') {this.value = 'Password';}" /> 
+						<select style="margin-bottom:20px " name="belongSchool">
+							<option>学校</option>
+							<option value="ygxy">阳光学院</option>
+						</select>
+						<select name="dept">
+							<option>系部</option>
+							<option value="jsjx">计算机系</option>
+						</select>
+						<select name="specialty">
+							<option>专业</option>
+							<option value="wlgc">网络工程</option>
+						</select>
+						<select name="belongClass">
+							<option>班级</option>
+							<option value="1">1班</option>
+						</select>
+						<select name="type">
+							<option value="1">学生</option>
+							<option value="2">老师</option>
+						</select>
 						<input type="submit" value="Login" />
-					<p>
-						<a href="#">Lost your password?</a>
-					</p>
+						
 				</form>
 			</div>
 		</div>

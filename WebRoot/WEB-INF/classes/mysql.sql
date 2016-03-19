@@ -1,6 +1,7 @@
 --drop  table class_user;
 --delete from class_user;
 select * from class_user;
+alter table class_user add (lastTimeLogin bigint);
 create table class_user (
 	id varchar(50) not null,
 	sex varchar(5) ,
@@ -16,5 +17,5 @@ create table class_user (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 commit;
 insert into class_user values(
-	'000001','ÄÐ','ÁÖ½£»Ô','241192160','66cc7c8771858dd1acdbd3655aa39335','1','0','1','jsjgcx','wlgc','ygxy'
+	'000001','ï¿½ï¿½','ï¿½Ö½ï¿½ï¿½ï¿½','241192160','66cc7c8771858dd1acdbd3655aa39335','1','0','1','jsjgcx','wlgc','ygxy'
 )

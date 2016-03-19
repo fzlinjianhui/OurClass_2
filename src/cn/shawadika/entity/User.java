@@ -4,12 +4,19 @@ public class User {
 	private String id;
 	private String name;
 	private String sex;
-	private String type;// ÀàĞÍ£¬¿ÉÄÜÓĞ²»Í¬ÀàĞÍµÄÓÃ»§£¬±ÈÈç½ÌÊ¦ÓëÑ§Éú
-	private Integer loginTimes;// µÇÂ¼´ÎÊı
-	private String belongClass;// °à¼¶ĞÅÏ¢
-	private String belongSchool;// Ñ§Ğ£ĞÅÏ¢
-	private String dept;// Ïµ
-	private String specialty;//×¨Òµ
+	private String type;//ç”¨æˆ·ç±»å‹1ä¸ºå­¦ç”Ÿ2ä¸ºè€å¸ˆ
+	private Integer loginTimes;// ç™»å½•æ¬¡æ•°
+	private String belongClass;// ç­çº§
+	private String belongSchool;// å­¦æ ¡
+	private String dept;// ç³»
+	private String specialty;//ä¸“ä¸š
+	private String lastTimeLogin;//æœ€åç™»å½•æ—¶é—´
+	public String getLastTimeLogin() {
+		return lastTimeLogin;
+	}
+	public void setLastTimeLogin(String lastTimeLogin) {
+		this.lastTimeLogin = lastTimeLogin;
+	}
 	public String getDept() {
 		return dept;
 	}
@@ -22,8 +29,8 @@ public class User {
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
 	}
-	private String studentNum;// Ñ§ºÅ
-	private String password;// Ñ§ºÅ
+	private String studentNum;// Ñ§ï¿½ï¿½
+	private String password;// Ñ§ï¿½ï¿½
 	public String getPassword() {
 		return password;
 	}
@@ -82,7 +89,10 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", type="
 				+ type + ", loginTimes=" + loginTimes + ", belongClass="
-				+ belongClass + ", belongSchool=" + belongSchool + "]";
+				+ belongClass + ", belongSchool=" + belongSchool + ", dept="
+				+ dept + ", specialty=" + specialty + ", lastTimeLogin="
+				+ lastTimeLogin + ", studentNum=" + studentNum + ", password="
+				+ password + "]";
 	}
 	
 }

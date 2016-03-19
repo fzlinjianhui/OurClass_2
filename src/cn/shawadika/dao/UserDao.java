@@ -3,8 +3,10 @@ package cn.shawadika.dao;
 import cn.shawadika.entity.User;
 
 public interface UserDao {
-	//²åÈëÑ§Éú
+	//æ’å…¥ç”¨æˆ·
 	public void insertUser(User user);
-	//²éÑ¯ËùÓĞ
+	//æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
 	public User findAllUser();
+	//ç™»å½•æ“ä½œ
+	public User login(User user);
 }
