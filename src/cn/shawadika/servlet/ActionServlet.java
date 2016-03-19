@@ -1,55 +1,84 @@
 package cn.shawadika.servlet;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
-import cn.shawadika.dao.UserDao;
-import cn.shawadika.dbutil.DBinit;
 import cn.shawadika.dbutil.DBopera;
 import cn.shawadika.entity.User;
 import cn.shawadika.util.Md5Util;
 
-public class ActionServlet extends HttpServlet{
-	//get请求
-	public void doGet(HttpServletRequest request,HttpServletResponse response){
+public class ActionServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	// post请求
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=utf-8");
-			String uri = request.getRequestURI();//ַ
-			String str = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));//
-			//登陆请求
-			if("/loginin".equals(str)){
-				String userName = request.getParameter("userName");
+			String uri = request.getRequestURI();// ַ
+			String str = uri.substring(uri.lastIndexOf("/"),
+					uri.lastIndexOf("."));//
+			// 登陆请求
+			if ("/loginin".equals(str)) {
+				String studentNum = request.getParameter("studentNum");
 				String passWord = request.getParameter("passWord");
 				String belongSchool = request.getParameter("belongSchool");
 				String dept = request.getParameter("dept");
-				String specialty = request.getParameter("specialty");//专业
+				String specialty = request.getParameter("specialty");// 专业
 				String belongClass = request.getParameter("belongClass");
 				String type = request.getParameter("type");
-				User user=new User();
+				User user = new User();
 				user.setBelongClass(belongClass);
 				user.setBelongSchool(belongSchool);
 				user.setDept(dept);
-				user.setName(userName);
-				user.setPassword(Md5Util.md5(passWord+userName));//密码加上学号一起加密
+				user.setStudentNum(studentNum);
+				user.setPassword(Md5Util.md5(passWord + studentNum));// 密码加上学号一起加密
 				user.setSpecialty(specialty);
 				user.setType(type);
-				
-				User user2 = DBopera.login(user);
-				System.out.println(user2);
+				// 执行登录操作
+				final User user2 = DBopera.login(user);
+				if (user2 == null) {
+					// 用户登录失败
+					System.out.println("登录失败");
+					return;
+				}
+				/*
+				 * 向数据库插入数据改变该用户的登录次数和最后一次登陆时间
+				 */
+				Thread t = new Thread() {
+					@Override
+					public void run() {
+						Integer times = user2.getLoginTimes() + 1;
+						user2.setLastTimeLogin(System.currentTimeMillis());
+						user2.setLoginTimes(times);
+						if (times == 1) {
+							// 如果用户是第一次登录记录其第一次登录时间
+							user2.setFirstTimeLogin(System.currentTimeMillis());
+						}
+						DBopera.changeUserInfo(user2);
+					}
+				};
+				t.start();
+				// 将用户版定到session
+				request.getSession().setAttribute("user", user2);
+				// 转发到班级首页
+				response.sendRedirect("index.jsp");
+
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("转发错误");
+			e.printStackTrace();
 		}
 	}
-	//post请求
-	public void doPost(HttpServletRequest request,HttpServletResponse response){
-		
+
+	// get请求
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+
 	}
 }

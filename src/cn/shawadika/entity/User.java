@@ -10,11 +10,21 @@ public class User {
 	private String belongSchool;// 学校
 	private String dept;// 系
 	private String specialty;//专业
-	private String lastTimeLogin;//最后登录时间
-	public String getLastTimeLogin() {
+	private Long lastTimeLogin;//最后登录时间
+	private String studentNum;// 
+	private String password;//
+	private Long firstTimeLogin;//第一次登录时间
+	
+	public Long getFirstTimeLogin() {
+		return firstTimeLogin;
+	}
+	public void setFirstTimeLogin(Long firstTimeLogin) {
+		this.firstTimeLogin = firstTimeLogin;
+	}
+	public Long getLastTimeLogin() {
 		return lastTimeLogin;
 	}
-	public void setLastTimeLogin(String lastTimeLogin) {
+	public void setLastTimeLogin(Long lastTimeLogin) {
 		this.lastTimeLogin = lastTimeLogin;
 	}
 	public String getDept() {
@@ -29,8 +39,7 @@ public class User {
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
 	}
-	private String studentNum;// ѧ��
-	private String password;// ѧ��
+
 	public String getPassword() {
 		return password;
 	}
@@ -92,7 +101,7 @@ public class User {
 				+ belongClass + ", belongSchool=" + belongSchool + ", dept="
 				+ dept + ", specialty=" + specialty + ", lastTimeLogin="
 				+ lastTimeLogin + ", studentNum=" + studentNum + ", password="
-				+ password + "]";
+				+ password + ", firstTimeLogin=" + firstTimeLogin + "]";
 	}
 	
 }

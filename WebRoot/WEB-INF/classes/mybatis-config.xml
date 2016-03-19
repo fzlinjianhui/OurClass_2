@@ -16,6 +16,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="cn/shawadika/dao/userDao.xml" />
+		<mapper resource="cn/shawadika/dao/UserDao.xml" />
 	</mappers>
 </configuration>

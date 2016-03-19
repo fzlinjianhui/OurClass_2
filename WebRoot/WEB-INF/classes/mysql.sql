@@ -1,7 +1,7 @@
 --drop  table class_user;
 --delete from class_user;
-select * from class_user;
-alter table class_user add (lastTimeLogin bigint);
+select * from class_user where type=1 and id=000001 and studentNum='2411921600';
+alter table class_user add (firstTimeLogin bigint);
 create table class_user (
 	id varchar(50) not null,
 	sex varchar(5) ,
@@ -19,3 +19,4 @@ commit;
 insert into class_user values(
 	'000001','��','�ֽ���','241192160','66cc7c8771858dd1acdbd3655aa39335','1','0','1','jsjgcx','wlgc','ygxy'
 )
+update class_user set loginTimes=0 where id='000001'

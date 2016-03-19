@@ -9,4 +9,6 @@ public interface UserDao {
 	public User findAllUser();
 	//登录操作
 	public User login(User user);
+	//修改用户信息
+	public void changeUserInfo(User user);
 }

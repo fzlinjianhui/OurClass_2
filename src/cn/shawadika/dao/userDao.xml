@@ -23,9 +23,28 @@
 		parameterType="cn.shawadika.entity.User">
 		select
 		id,sex,name,studentNum,password,type,
-		loginTimes,belongClass,dept,specialty,belongSchool,lastTimeLogin
-		from class_user where studentNum=#{studentNum},
-		password=#{password},belongClass=#{belongClass},dept=#{dept},specialty=#{specialty},
+		loginTimes,belongClass,dept,specialty,belongSchool,lastTimeLogin,firstTimeLogin
+		from
+		class_user
+		where
+		studentNum=#{studentNum} and
+		password=#{password} and
+		belongClass=#{belongClass} and
+		dept=#{dept} and
+		specialty=#{specialty} and 
 		belongSchool=#{belongSchool}
 	</select>
+	<!-- 改变用户的某些信息 -->
+	<update id="changeUserInfo" parameterType="cn.shawadika.entity.User">
+		update class_user set 
+		password=#{password},
+		loginTimes=#{loginTimes},
+		belongClass=#{belongClass},
+		specialty=#{specialty},
+		lastTimeLogin=#{lastTimeLogin},
+		dept=#{dept},
+		firstTimeLogin=#{firstTimeLogin},
+		name=#{name}
+		where id=#{id}
+	</update>
 </mapper>

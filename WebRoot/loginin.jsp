@@ -33,8 +33,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>Welcome</h1>
 		<div class="contact-form" >
 			<div class="signin">
-				<form action="loginin.do" method="get">
-					<input name="userName" type="text" class="user"
+				<form action="loginin.do" method="post">
+					<input name="studentNum" type="text" class="user"
 						value="Enter Your Username" onfocus="this.value = '';"
 						onblur="if (this.value == '') {this.value = 'Enter Your Username';}" />
 					<input name="passWord" type="password" class="pass"
@@ -46,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</select>
 						<select name="dept">
 							<option>系部</option>
-							<option value="jsjx">计算机系</option>
+							<option value="jsjgcx">计算机系</option>
 						</select>
 						<select name="specialty">
 							<option>专业</option>
