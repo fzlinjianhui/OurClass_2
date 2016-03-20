@@ -5,28 +5,16 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="cn.shawadika.entity.User"%>
 <!DOCTYPE HTML>
-
+<%
+	User user=(User)request.getSession().getAttribute("user");
+	if(user==null){response.sendRedirect("loginin.jsp");return;}//判断用户是否登录没有登录就转发到登录页面
+	String name=user.getName();
+%>
 <html>
-<head>
-<title>MyClass</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary JavaScript plugins) -->
-<script src="js/bootstrap.js"></script>
-<!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="班级网站" />
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
-</head>
+<title>班级首页</title>
+<jsp:include page="head/head.jsp"></jsp:include>
 <body>
 	<!-- banner -->
 	<script src="js/responsiveslides.min.js"></script>
@@ -43,6 +31,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<div class="banner">
 		<jsp:include page="head/menu.jsp"></jsp:include>
+	
 		<div class="slider">
 			<div class="caption">
 				<div class="container">

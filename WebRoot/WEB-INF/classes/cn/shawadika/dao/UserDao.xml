@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shawadika.dao.UserDao">
+	<!-- 插入用户 -->
+	<insert id="insertUser" parameterType="cn.shawadika.entity.User">
+		insert into class_user
+		values(
+		#{id},
+		#{sex},
+		#{name},
+		#{studentNum},
+		#{password},
+		#{type},
+		#{loginTimes},
+		#{belongClass},
+		#{dept},
+		#{specialty},
+		#{belongSchool},
+		#{lastTimeLogin}
+		);
+	</insert>
+	<!-- 传入一个用户，登录操作，返回用户的所有信息 -->
+	<select id="login" resultType="cn.shawadika.entity.User"
+		parameterType="cn.shawadika.entity.User">
+		select
+		id,sex,name,studentNum,password,type,
+		loginTimes,belongClass,dept,specialty,belongSchool,lastTimeLogin,firstTimeLogin
+		from
+		class_user
+		where
+		studentNum=#{studentNum} and
+		password=#{password} and
+		belongClass=#{belongClass} and
+		dept=#{dept} and
+		specialty=#{specialty} and 
+		belongSchool=#{belongSchool}
+	</select>
+	<!-- 改变用户的某些信息 -->
+	<update id="changeUserInfo" parameterType="cn.shawadika.entity.User">
+		update class_user set 
+		password=#{password},
+		loginTimes=#{loginTimes},
+		belongClass=#{belongClass},
+		specialty=#{specialty},
+		lastTimeLogin=#{lastTimeLogin},
+		dept=#{dept},
+		firstTimeLogin=#{firstTimeLogin},
+		name=#{name}
+		where id=#{id}
+	</update>
+</mapper>
