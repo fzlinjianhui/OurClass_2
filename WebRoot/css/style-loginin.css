@@ -60,6 +60,23 @@ h1 {
 	font-family: Cabin-Regular;
 	color: gray;
 }
+.signin input[type="button"] {
+    width: 83%;
+    height: 40px;
+	font-size: 16px;
+    background-color: #1BBC9B;
+    border: none;
+	color: #CBFDFD;
+	cursor: pointer;
+	outline: none;
+}
+input[type="button"]:hover {
+    background-color: #F96D6E;
+	-webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
 .signin input[type="submit"] {
     width: 83%;
     height: 40px;
@@ -583,6 +600,13 @@ form p a:hover {
 	margin-left: 5em;
 	margin-top: -5em;
 	position: absolute;
+}
+.wrong{
+	position:absolute;
+	background-color: #B22E29;
+	padding: 2px 2px 2px 2px;
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 1.2em;
 }
 
 /*--- Responsinator Code ---*/

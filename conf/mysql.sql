@@ -4,7 +4,7 @@ select * from class_user where type=1 and id=000001 and studentNum='2411921600';
 alter table class_user add (firstTimeLogin bigint);
 create table class_user (
 	id varchar(50) not null,
-	sex varchar(5) ,
+	sex varchar(5) ,x
 	name varchar(20),
 	studentNum varchar(50) not null,
 	password varchar(50) not null,

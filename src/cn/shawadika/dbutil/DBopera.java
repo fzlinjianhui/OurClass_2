@@ -13,7 +13,8 @@ public class DBopera extends DBinit {
 	static SqlSessionFactory sqlSessionFactory = null;
 	static {
 		sqlSessionFactory = DBinit.getSqlSessionFactory();
-		
+		sqlSession = sqlSessionFactory.openSession();
+		userDao = (UserDao) sqlSession.getMapper(UserDao.class);
 
 	}
 
@@ -26,11 +27,8 @@ public class DBopera extends DBinit {
 	public static User login(User user) {
 		User user2 = null;
 		try {
-			sqlSession = sqlSessionFactory.openSession();
-			userDao = (UserDao) sqlSession.getMapper(UserDao.class);
 			user2 = userDao.login(user);
 		} finally {
-			sqlSession.close();
 		}
 	
 		return user2;
@@ -42,12 +40,9 @@ public class DBopera extends DBinit {
 	 */
 	public static void changeUserInfo(User user) {
 		try {
-			sqlSession = sqlSessionFactory.openSession();
-			userDao = (UserDao) sqlSession.getMapper(UserDao.class);
 			userDao.changeUserInfo(user);
 		} finally {
 			sqlSession.commit();
-			sqlSession.close();
 		}
 		
 	}

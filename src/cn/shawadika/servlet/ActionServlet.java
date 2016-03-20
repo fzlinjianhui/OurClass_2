@@ -43,7 +43,8 @@ public class ActionServlet extends HttpServlet {
 				final User user2 = DBopera.login(user);
 				if (user2 == null) {
 					// 用户登录失败
-					System.out.println("登录失败");
+					request.getSession().setAttribute("wrong", "不存在此用户,请检查");
+					response.sendRedirect("loginin.jsp");
 					return;
 				}
 				/*

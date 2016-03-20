@@ -15,7 +15,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords"
 	content="Simple User Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, SonyErricsson, Motorola Web Design" />
 <script type="application/x-javascript">
+	
+	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
+
 </script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/loginin.js"></script>
@@ -31,37 +41,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<a href="index.jsp"><img src="images/logo.jpg" alt="" /></a>
 		</div>
 		<h1>Welcome</h1>
-		<div class="contact-form" >
+		<div class="contact-form">
 			<div class="signin">
 				<form action="loginin.do" method="post">
-					<input name="studentNum" type="text" class="user"
-						value="Enter Your Username" onfocus="this.value = '';"
-						onblur="if (this.value == '') {this.value = 'Enter Your Username';}" />
-					<input name="passWord" type="password" class="pass"
-						value="Password" onfocus="this.value = '';"
-						onblur="if (this.value == '') {this.value = 'Password';}" /> 
-						<select style="margin-bottom:20px " name="belongSchool">
-							<option>学校</option>
-							<option value="ygxy">阳光学院</option>
-						</select>
-						<select name="dept">
-							<option>系部</option>
-							<option value="jsjgcx">计算机系</option>
-						</select>
-						<select name="specialty">
-							<option>专业</option>
-							<option value="wlgc">网络工程</option>
-						</select>
-						<select name="belongClass">
-							<option>班级</option>
-							<option value="1">1班</option>
-						</select>
-						<select name="type">
-							<option value="1">学生</option>
-							<option value="2">老师</option>
-						</select>
-						<input type="submit" value="Login" />
-						
+				<span id="wrong-info" class="wrong"><%=request.getSession().getAttribute("wrong") == null ? ""
+					: request.getSession().getAttribute("wrong")%></span>
+					 <input id="stuNum" placeholder="您的额学号"
+						name="studentNum" type="text" class="user"
+						onfocus="this.value = '';" /> <input placeholder="您的密码" id="psw" name="passWord"
+						type="password" class="pass" onfocus="this.value = '';" /> <select
+						style="margin-bottom:20px " name="belongSchool">
+						<option>学校</option>
+						<option value="ygxy">阳光学院</option>
+					</select> <select name="dept">
+						<option>系部</option>
+						<option value="jsjgcx">计算机系</option>
+					</select> <select name="specialty">
+						<option>专业</option>
+						<option value="wlgc">网络工程</option>
+					</select> <select name="belongClass">
+						<option>班级</option>
+						<option value="1">1班</option>
+					</select> <select name="type">
+						<option value="1">学生</option>
+						<option value="2">老师</option>
+					</select> <input type="button" value="Login" id="submit" />
 				</form>
 			</div>
 		</div>
