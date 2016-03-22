@@ -22,7 +22,7 @@
 	</div>
 	<div class="top-menu">
 		<span class="menu"></span>
-		<ul class="navig">
+		<ul class="navig" style="font-size: "微软雅黑">
 			<li><a href="index.jsp">首页</a></li>
 			<li><a href="program.jsp">未知地带</a></li>
 			<li><a href="blog.jsp">博客</a></li>

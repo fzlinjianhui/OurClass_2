@@ -66,6 +66,7 @@
 			success : function(data) { 
 				$("#wrong-info-span").html(data);
 				$("#wrong-info-span").fadeIn("fast").delay(3000).fadeOut("fast");
+				//setTimeout(window.location.reload(), 3000);
 			}
 		}); 
 	}

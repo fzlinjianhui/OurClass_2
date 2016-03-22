@@ -25,7 +25,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript">
 	$(function(){
 		$(".contact-form").animate({top:"0px"},"4000");
-		//$(".block").animate({left: '+50px'}, "slow");
 	});
 </script>
 <!-- //For-Mobile-Apps -->

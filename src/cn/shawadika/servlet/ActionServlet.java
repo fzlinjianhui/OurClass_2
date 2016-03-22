@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import cn.shawadika.dbutil.DBinit;
 import cn.shawadika.dbutil.DBopera;
 import cn.shawadika.entity.User;
 import cn.shawadika.util.Md5Util;
@@ -96,19 +97,11 @@ public class ActionServlet extends HttpServlet {
 						// 如果旧密码不正确
 						writer.print("旧密码不正确哦~");
 					} else {
-						writer.print("修改成功啦,下一次请用新密码登录~");
-						
-						/*
-						 * bug因为这里跳转会引发页面错乱，所以就不跳转了，但是可能会引发一个问题：
-						 * 数据库中的是新密码，在session中还是旧密码会导致用户马上
-						 * 再修改密码的话系统就是用旧密码来验证用户的旧密码是否正确,
-						 * 所以这里要重新绑定一下新密码
-						 */
-						// 旧密码正确
 						user.setPassword(Md5Util.md5(newPsw+user.getStudentNum()));
-						request.getSession().setAttribute("user", user);
-						System.out.println("修改数据库中的密码");
-						
+						// 旧密码正确
+						DBopera.changeUserInfo(user);//向数据库更新密码数据
+						request.removeAttribute("user");//修改完密码要求用户重新登录
+						writer.print("修改成功啦,请用新密码重新登录登录~");
 						//response.sendRedirect("loginin.jsp");
 					}
 				}
