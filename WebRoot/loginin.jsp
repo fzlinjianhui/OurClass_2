@@ -20,6 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/loginin.js"></script>
 <!-- //For-Mobile-Apps -->
 <!-- Style -->

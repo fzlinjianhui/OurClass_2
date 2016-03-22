@@ -1,12 +1,18 @@
 package cn.shawadika.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import cn.shawadika.dbutil.DBopera;
 import cn.shawadika.entity.User;
 import cn.shawadika.util.Md5Util;
@@ -37,6 +43,10 @@ public class ActionServlet extends HttpServlet {
 				user.setDept(dept);
 				user.setStudentNum(studentNum);
 				user.setPassword(Md5Util.md5(passWord + studentNum));// 密码加上学号一起加密
+				if (passWord.length() == 32) {
+					// 如果该密码长度是32说明是用cookies登录，就不用再进行加密登录
+					user.setPassword(passWord);
+				}
 				user.setSpecialty(specialty);
 				user.setType(type);
 				// 执行登录操作
@@ -68,8 +78,42 @@ public class ActionServlet extends HttpServlet {
 				request.getSession().setAttribute("user", user2);
 				// 转发到班级首页
 				response.sendRedirect("index.jsp");
-
+				/*
+				 * 修改密码等操作
+				 */
+			} else if ("/changeInfo".equals(str)) {
+				PrintWriter writer = response.getWriter();
+				String oldPsw = request.getParameter("oldPsw");// 旧密码
+				String newPsw = request.getParameter("newPsw");// 新密码
+				User user = (User) request.getSession().getAttribute("user");
+				if (user == null) {
+					// 判断用户的session是否过期，过期需要重新登录
+					writer.print("过期请重新登录~！");
+					response.sendRedirect("loginin.jsp");
+				} else {
+					if (!user.getPassword().equals(
+							Md5Util.md5(oldPsw + user.getStudentNum()))) {
+						// 如果旧密码不正确
+						writer.print("旧密码不正确哦~");
+					} else {
+						writer.print("修改成功啦,下一次请用新密码登录~");
+						
+						/*
+						 * bug因为这里跳转会引发页面错乱，所以就不跳转了，但是可能会引发一个问题：
+						 * 数据库中的是新密码，在session中还是旧密码会导致用户马上
+						 * 再修改密码的话系统就是用旧密码来验证用户的旧密码是否正确,
+						 * 所以这里要重新绑定一下新密码
+						 */
+						// 旧密码正确
+						user.setPassword(Md5Util.md5(newPsw+user.getStudentNum()));
+						request.getSession().setAttribute("user", user);
+						System.out.println("修改数据库中的密码");
+						
+						//response.sendRedirect("loginin.jsp");
+					}
+				}
 			}
+
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

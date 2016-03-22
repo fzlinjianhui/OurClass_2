@@ -16,3 +16,4 @@ function check_stuNum_psw(){
 		$("#submit").attr("type","submit");
 	}
 }
+
