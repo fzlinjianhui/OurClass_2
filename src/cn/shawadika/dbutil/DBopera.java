@@ -15,7 +15,6 @@ public class DBopera extends DBinit {
 		sqlSessionFactory = DBinit.getSqlSessionFactory();
 		sqlSession = sqlSessionFactory.openSession();
 		userDao = (UserDao) sqlSession.getMapper(UserDao.class);
-
 	}
 
 	/**

@@ -22,19 +22,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/loginin.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".contact-form").animate({top:"0px"},"4000");
+		//$(".block").animate({left: '+50px'}, "slow");
+	});
+</script>
 <!-- //For-Mobile-Apps -->
 <!-- Style -->
 <link rel="stylesheet" href="css/style-loginin.css" type="text/css"
 	media="all">
 </head>
 <body>
+<div id="big_body" >
 	<script src="js/responsiveslides.min.js"></script>
 	<div class="container">
 		<div class="logo">
 			<a href="index.jsp"><img src="images/logo.jpg" alt="" /></a>
 		</div>
 		<h1>Welcome</h1>
-		<div class="contact-form">
+		<div class="contact-form" style="position: relative;top:-100000px;">
 			<div class="signin">
 				<form action="loginin.do" method="post">
 					<span id="wrong-info" class="wrong"><%=request.getSession().getAttribute("wrong") == null ? ""
@@ -69,5 +76,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			Design by <a href="http://w3layouts.com">W3layouts</a>
 		</p>
 	</div>
+</div>
 </body>
 </html>

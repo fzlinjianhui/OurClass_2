@@ -35,6 +35,8 @@
 		$('[data-toggle="tooltip"]').tooltip();
 		//启动弹出框
 		$('[data-toggle="popover"]').popover();
+		//将警告框去掉，不然会在页面留下一个小红点
+		$("#wrong-info-span").fadeOut("fast");
 	});
 	//提交修改密码按钮
 	function changeInfo(){
