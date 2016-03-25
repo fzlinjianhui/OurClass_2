@@ -1,23 +1,21 @@
 package cn.shawadika.servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import cn.shawadika.dbutil.DBinit;
 import cn.shawadika.dbutil.DBopera;
 import cn.shawadika.entity.User;
 import cn.shawadika.util.Md5Util;
-
+/**
+ * 用来处理.do结尾的请求
+ * @author lin
+ *
+ */
 public class ActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -100,9 +98,8 @@ public class ActionServlet extends HttpServlet {
 						user.setPassword(Md5Util.md5(newPsw+user.getStudentNum()));
 						// 旧密码正确
 						DBopera.changeUserInfo(user);//向数据库更新密码数据
-						request.removeAttribute("user");//修改完密码要求用户重新登录
-						writer.print("修改成功啦,请用新密码重新登录登录~");
-						//response.sendRedirect("loginin.jsp");
+						request.getSession().removeAttribute("user");//修改完密码要求用户重新登录
+						request.getSession().setAttribute("wrong", "密码修改成功，请重新登录~");
 					}
 				}
 			}

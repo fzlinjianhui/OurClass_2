@@ -66,9 +66,12 @@
 			success : function(data) { 
 				$("#wrong-info-span").html(data);
 				$("#wrong-info-span").fadeIn("fast").delay(3000).fadeOut("fast");
-				//setTimeout(window.location.reload(), 3000);
+				setTimeout(reflash(),5000);
 			}
 		}); 
+	}
+	function reflash(){
+		window.location.reload();
 	}
 </script>
 </head>
@@ -150,7 +153,6 @@
 						</tr>
 				</table>
 			</div>
-			
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				<button id="change-psw" type="button" class="btn btn-primary" onclick="changeInfo()">Save changes</button>
