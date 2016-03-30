@@ -4,17 +4,20 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import cn.shawadika.dao.UserDao;
+import cn.shawadika.dao.newInfoDao;
 import cn.shawadika.entity.User;
+import cn.shawadika.entity.newInfo;
+import cn.shawadika.util.Md5Util;
 
 public class DBopera extends DBinit {
 	private static UserDao userDao;
+	private static newInfoDao newInfoDao;
 	private static SqlSession sqlSession;
 
 	static SqlSessionFactory sqlSessionFactory = null;
 	static {
 		sqlSessionFactory = DBinit.getSqlSessionFactory();
-		sqlSession = sqlSessionFactory.openSession();
-		userDao = (UserDao) sqlSession.getMapper(UserDao.class);
+		
 	}
 
 	/**
@@ -26,10 +29,12 @@ public class DBopera extends DBinit {
 	public static User login(User user) {
 		User user2 = null;
 		try {
+			sqlSession = sqlSessionFactory.openSession();
+			userDao = (UserDao) sqlSession.getMapper(UserDao.class);
 			user2 = userDao.login(user);
 		} finally {
+			sqlSession.close();
 		}
-	
 		return user2;
 	}
 	/**
@@ -39,46 +44,61 @@ public class DBopera extends DBinit {
 	 */
 	public static void changeUserInfo(User user) {
 		try {
+			sqlSession = sqlSessionFactory.openSession();
+			userDao = (UserDao) sqlSession.getMapper(UserDao.class);
 			userDao.changeUserInfo(user);
 		} finally {
 			sqlSession.commit();
+			sqlSession.close();
 		}
 		
 	}
-
+	public static void createSchoolNews(){
+		 try {
+			 sqlSession=sqlSessionFactory.openSession();
+			 newInfoDao=(newInfoDao)sqlSession.getMapper(newInfoDao.class);
+			 newInfo info=new newInfo();
+			 info.setContent("测试");
+			 info.setIneffect("1");
+			 info.setRes1("");
+			 info.setRes2("");
+			 info.setTime(0l);
+			 info.setTitle("test");
+			 info.setType("1");
+			 info.setUserId("000001");
+			 System.out.println(info.toString());
+			 newInfoDao.insertNewInfo(info);
+		}catch(Exception e){
+			e.getMessage();
+		} finally {
+			// TODO: handle exception
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 	/**
 	 * 以下是测试方法
 	 */
-	// public static void main(String[] args) {
-	// sqlSession=sqlSessionFactory.openSession();
-	// userDao=(UserDao)sqlSession.getMapper(UserDao.class);
-	// DBopera test=new DBopera();
-	// User user = new User();
-	// user.setStudentNum("241192160");
-	// user.setPassword("66cc7c8771858dd1acdbd3655aa39335");
-	// User user2 = test.login(user);
-	// System.out.println(user2);
-	// }
-	// public User addUser(){
-	// User user=new User();
-	// try {
-	// user.setBelongClass("1");
-	// user.setBelongSchool("ygxy");
-	// user.setDept("jsjgcx");
-	// user.setId("000002");
-	// user.setLoginTimes(0);
-	// user.setName("teacher");
-	// user.setSex("男");
-	// user.setSpecialty("wlgc");
-	// user.setStudentNum("10101010");
-	// user.setType("2");
-	// user.setPassword(Md5Util.md5("111111"+user.getStudentNum()));
-	// userDao.insertUser(user);
-	// sqlSession.commit();
-	// } finally {
-	// sqlSession.close();
-	// }
-	//
-	// return user;
-	// }
+	 public static void main(String[] args) {
+		 try {
+			 sqlSession=sqlSessionFactory.openSession();
+			 newInfoDao=(newInfoDao)sqlSession.getMapper(newInfoDao.class);
+			 newInfo info=new newInfo();
+			 info.setContent("测试");
+			 info.setIneffect("1");
+			 info.setRes1("");
+			 info.setRes2("");
+			 info.setTime(0l);
+			 info.setTitle("test");
+			 info.setType("1");
+			 info.setUserId("000001");
+			 System.out.println(info.toString());
+			 newInfoDao.insertNewInfo(info);
+		}catch(Exception e){
+			e.getMessage();
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	 }
 }

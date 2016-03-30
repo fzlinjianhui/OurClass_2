@@ -114,6 +114,18 @@ public class ActionServlet extends HttpServlet {
 
 	// get请求
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=utf-8");
+			String uri = request.getRequestURI();// ַ
+			String str = uri.substring(uri.lastIndexOf("/"),
+					uri.lastIndexOf("."));//
+			if("/createnew".equals(str)){
+//				DBopera.
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 }

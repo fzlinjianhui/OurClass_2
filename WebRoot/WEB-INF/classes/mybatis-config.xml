@@ -17,5 +17,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="cn/shawadika/dao/UserDao.xml" />
+		<mapper resource="cn/shawadika/dao/newInfoDao.xml" />
 	</mappers>
 </configuration>

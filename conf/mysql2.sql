@@ -1,6 +1,7 @@
---drop  table class_user;
+--drop  table newinfo;
 --delete from class_user;
 select * from class_user where type=1 and id=000001 and studentNum='2411921600';
+select * from newinfo
 alter table class_user add (firstTimeLogin bigint);
 create table class_user (
 	id varchar(50) not null,
@@ -30,7 +31,9 @@ create table newinfo(
 	content text,
 	time bigint,
 	ineffect varchar(10),
-	userid varchar(50)
+	userid varchar(50),
+	res1 varchar(50),
+	res2 varchar(50)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
